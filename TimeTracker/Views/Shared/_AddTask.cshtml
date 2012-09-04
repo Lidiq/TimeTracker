@@ -1,0 +1,30 @@
+﻿@using TimeTracker.Models;
+@model List<UserViewModel>
+
+<div class="editEmployee">
+@using (Html.BeginForm("CreateTask", "Admin", FormMethod.Post))
+{
+	<label for="taskName">Task Name</label>
+	<input type="text" id="taskName" name="taskName" />
+	<label for="description">Description</label>
+	<textarea id="description" name="description" rows="10" cols="47"></textarea>
+	<label for="start">Start date</label>
+	<input type="text" id="start" name="start" />
+	<label for="end">End date</label>
+	<input type="text" id="end" name="end"/>
+	<label for="estimation">Estimation</label>
+	<input type="text" id="estimation" name="estimation" />
+    <label for="status">Status</label>
+	<input type="text" id="status" name="status" />
+    <label for="users">Select employees</label>
+    <select multiple="multiple" name="users" style="height:100px">
+        @foreach (var user in Model)
+        {
+            <option value="@user.userId">@user.username</option>
+        }
+    </select>
+    
+	<br />
+	<input type="submit" name="save" value="Create Task" />
+}
+</div>

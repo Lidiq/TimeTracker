@@ -1,0 +1,57 @@
+﻿@using TimeTracker.Models;
+
+@model List<UserViewModel>
+           
+@{
+    ViewBag.Title = "Edit or delete User";
+}
+
+@if (ViewBag.FirstName == null)
+{
+<div class="mainContent">
+    <h2>Delete User</h2>
+
+    <div class="editEmployee">
+     @using (Html.BeginForm("EditUser", "Account", new { username = "mirko"}))
+     {
+        <label for="chooseTask">Choose User</label>
+        <select id="chooseTask" class="optTasks">
+		@foreach (var user in Model)
+        {
+            <option value="@user.username">@user.username (@user.FirstName @user.LastName)</option>
+        }
+        
+        </select>
+        
+        <input type="submit" value="Delete User" />
+        <input type="submit" value="Edit User" />
+    }
+    </div> 
+</div>
+}
+else
+{
+    <label for="newpassword">New password</label>
+	<input type="password" id="newpassword" value="1234" />
+        
+	<label for="newconfpass">Confirm new password</label>
+	<input type="password" id="newconfpass" value="1234"/>
+        
+	<label for="newname">First Name</label>
+	<input type="text" id="newname" value="@ViewBag.FirstName" />
+        
+	<label for="newlastname">Last Name</label>
+	<input type="text" id="newlastname" value="Gavrilov" />
+        
+	<label for="newposition">Position</label>
+	<input type="text" id="newposition" value="software developer" />
+        
+	<label for="newemail">Email</label>
+	<input type="text" id="newemail" value="test@yahoo.com" />
+        
+	<div class="clear"></div>
+    
+    @ViewBag.FirstName
+}
+
+

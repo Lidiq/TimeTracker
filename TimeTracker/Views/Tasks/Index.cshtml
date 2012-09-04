@@ -1,0 +1,91 @@
+﻿@using TimeTracker.Models;
+@model List<TaskViewModel>
+           
+@{
+    ViewBag.Title = "Tasks";
+}
+
+@if (ViewBag.ShowTask == true)
+{
+    <script>$(document).ready(function () { $('#singleTask').click(); })</script>
+}
+
+<div class="mainContent">
+			
+	<div class="sidebar">
+		<div id="allTasks">View all tasks<span>&raquo;</span></div>
+		<div id="singleTask">View single task<span>&raquo;</span></div>
+	</div>
+				
+	<div class="resTable">
+		<div id="allT">
+			<table class="all" border="1">
+				<thead>
+					<tr>
+						<th>Name</th>
+                        <th>Description</th>
+						<th>Begin</th>
+						<th>End</th>
+						<th>Count</th>
+						<th>Estimation</th>
+						<th>Logged</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+
+                @foreach (TaskViewModel task in Model)
+                {
+                    <tr>
+                        <td>@task.TaskName</td>
+                        <td>@task.Description</td>
+                        <td>@task.start.Date.ToShortDateString()</td>
+                        <td>@task.end.Date.ToShortDateString()</td>
+                        <td>0</td>
+                        <td>@task.Estimation</td>
+                        <td></td>
+                        <td>@task.Status</td>
+                    </tr>; 
+                }	
+				</tbody>
+			</table>
+	
+		
+		</div>	
+		<div id="singleT">
+			<form method="get" action="/Tasks">	
+			    <select name="id" class="options" onchange="form.submit()">
+				    <option>Choose a task</option>
+					    @foreach (TaskViewModel task in Model)
+                        {
+                        <option value="@task.TaskId">@task.TaskName</option>   
+                        }	
+			    </select>
+            </form>
+			@if (ViewBag.ShowTask != null)
+           {			
+			<table class="single" border="1">
+				<thead>
+					<tr>
+						<td>Employee</td>
+						<td>Time</td>
+					</tr>
+				</thead>
+				<tbody>
+                    @{
+                       int elementAt = 0;
+                       foreach (var employee in ViewBag.Employees)
+                       {
+                            <tr>
+                            <td>@employee.FirstName @employee.LastName (@employee.Username)</td>
+                            <td>@((ViewBag.SpentHoursOnTask as ICollection<int>).ElementAt(elementAt))</td>
+                            </tr>
+                            elementAt++;
+                       }
+                     }
+				</tbody>
+			</table>
+            }	
+		</div>
+	</div>
+</div>

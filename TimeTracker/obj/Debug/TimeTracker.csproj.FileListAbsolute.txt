@@ -1,0 +1,9 @@
+D:\TimeTracker\TimeTracker\TimeTracker\obj\Debug\ResolveAssemblyReference.cache
+D:\TimeTracker\TimeTracker\TimeTracker\bin\TimeTracker.dll
+D:\TimeTracker\TimeTracker\TimeTracker\bin\TimeTracker.pdb
+D:\TimeTracker\TimeTracker\TimeTracker\bin\EntityFramework.dll
+D:\TimeTracker\TimeTracker\TimeTracker\bin\TimeTracker.DAL.dll
+D:\TimeTracker\TimeTracker\TimeTracker\bin\TimeTracker.DAL.pdb
+D:\TimeTracker\TimeTracker\TimeTracker\bin\EntityFramework.xml
+D:\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.dll
+D:\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.pdb

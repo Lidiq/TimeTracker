@@ -1,0 +1,45 @@
+﻿@using TimeTracker.Models;
+
+@model List<TaskViewModel>
+
+<div class="editEmployee">
+@if (ViewBag.Task == null)
+{
+    using (Html.BeginForm("EditTask", "Admin", FormMethod.Post))
+    {
+        <label for="task">Choose Task</label>
+        <select id="task" name="taskId">
+        @foreach (var task in Model)
+        {
+            <option value="@task.TaskId">@task.TaskName</option>
+        }
+        </select>
+        <br />
+        <input type="submit" name="delete" value="Delete Task" />
+        <input type="submit" name="edit" value="Edit Task" />
+    }
+
+}
+else
+{
+   
+    using (Html.BeginForm("EditTask", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" name="taskId" value="@ViewBag.Task.TaskId" />
+        <label for="taskName">Task Name</label>
+	    <input type="text" id="taskName" name="taskName" value="@ViewBag.Task.TaskName"/>
+	    <label for="description">Description</label>
+	    <textarea id="description" name="description" rows="10" cols="47" >@ViewBag.Task.Description</textarea>
+	    <label for="start">Start date</label>
+	    <input type="text" id="start" name="start" value="@ViewBag.Task.StartTime"/>
+	    <label for="end">End date</label>
+	    <input type="text" id="end" name="end" value="@ViewBag.Task.EndTime"/>
+	    <label for="estimation">Estimation</label>
+	    <input type="text" id="estimation" name="estimation" value="@ViewBag.Task.Estimation"/>
+        <label for="status">Estimation</label>
+	    <input type="text" id="status" name="status" value="@ViewBag.Task.Status"/>
+	    <br/>
+	    <input type="submit" name="save" value="Save changes" />
+    }
+}
+</div>

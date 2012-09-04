@@ -1,0 +1,82 @@
+﻿@using TimeTracker.Models;
+@model List<UserViewModel>
+           
+@{
+    ViewBag.Title = "Employees";
+}
+
+@if (ViewBag.ShowEmployee == true)
+{
+    <script>$(document).ready(function(){$('#singEmpl').click();})</script>
+}
+<div class="mainContent">
+			
+	<div class="sidebar">
+		<div id="allEmpl">View all employees<span>&raquo;</span></div>
+		<div id="singEmpl">View single employee<span>&raquo;</span></div>
+	</div>
+				
+	<div class="resTable">
+		<div id="allEmployee">
+			<table id="allEmployee" class="all" border="1">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Number of tasks</th>
+						<th>Summary of hours</th>
+					</tr>
+				</thead>
+				<tbody>
+                @{
+                    int elementAt = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                        <td>@item.FirstName @item.LastName</td>
+                        <td>@((ViewBag.NumberOfTasks as ICollection<int>).ElementAt(elementAt))</td>
+                        <td>@((ViewBag.SpentHours as ICollection<int>).ElementAt(elementAt))</td>
+                        </tr>
+                        elementAt++;
+                    }
+                    }
+				</tbody>
+			</table>
+			
+		</div>
+					
+		<div id="singleEmployee">
+            <form method="get" action="/Employees">
+			    <select class="options" name="name" onchange="form.submit()">
+					    <option>Choose an employee</option>
+					    @foreach (UserViewModel item in Model)
+                        {
+                             <option value="@item.username">@item.FirstName @item.LastName</option>
+                        }	
+			    </select>
+			</form>
+            @if (ViewBag.ShowEmployee != null)
+            {			
+			<table class="single" border="1">
+				<thead>
+					<tr>
+						<td>Task</td>
+						<td>Time</td>
+					</tr>
+				</thead>
+				<tbody>
+
+                  @{
+                      int pos = 0;
+                    foreach (var task in ViewBag.Tasks)
+                    {
+                        <tr><td>@task.TaskName</td>
+                        <td>@((ViewBag.SpentHoursOnTask as ICollection<int>).ElementAt(pos))</td></tr>
+                        pos++;
+                    }
+                  }
+				</tbody>
+			</table>
+            }
+		</div>
+	</div>
+</div>

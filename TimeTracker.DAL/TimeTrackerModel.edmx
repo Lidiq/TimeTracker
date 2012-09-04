@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TimeTrackerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TimeTrackerModelStoreContainer">
+          <EntitySet Name="aspnet_Membership" EntityType="TimeTrackerModel.Store.aspnet_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Profile" EntityType="TimeTrackerModel.Store.aspnet_Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="TimeTrackerModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tasks" EntityType="TimeTrackerModel.Store.Tasks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="TimeTrackerModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersTasks" EntityType="TimeTrackerModel.Store.UsersTasks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkCards" EntityType="TimeTrackerModel.Store.WorkCards" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="TimeTrackerModel.Store.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__38996AB5" Association="TimeTrackerModel.Store.FK__aspnet_Pr__UserI__38996AB5">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Profile_Users" Association="TimeTrackerModel.Store.FK_aspnet_Profile_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersTasks_Tasks" Association="TimeTrackerModel.Store.FK_UsersTasks_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="UsersTasks" EntitySet="UsersTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersTasks_Users" Association="TimeTrackerModel.Store.FK_UsersTasks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersTasks" EntitySet="UsersTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCards_Tasks" Association="TimeTrackerModel.Store.FK_WorkCards_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="WorkCards" EntitySet="WorkCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCards_Users" Association="TimeTrackerModel.Store.FK_WorkCards_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkCards" EntitySet="WorkCards" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyNames" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesString" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesBinary" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="Estimation" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Position" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="UsersTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TaskId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkCards">
+          <Key>
+            <PropertyRef Name="CardId" />
+          </Key>
+          <Property Name="CardId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TaskId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="LogComment" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Role="aspnet_Users" Type="TimeTrackerModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="TimeTrackerModel.Store.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pr__UserI__38996AB5">
+          <End Role="aspnet_Users" Type="TimeTrackerModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="TimeTrackerModel.Store.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Profile_Users">
+          <End Role="Users" Type="TimeTrackerModel.Store.Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="TimeTrackerModel.Store.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersTasks_Tasks">
+          <End Role="Tasks" Type="TimeTrackerModel.Store.Tasks" Multiplicity="1" />
+          <End Role="UsersTasks" Type="TimeTrackerModel.Store.UsersTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="UsersTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersTasks_Users">
+          <End Role="Users" Type="TimeTrackerModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersTasks" Type="TimeTrackerModel.Store.UsersTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersTasks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCards_Tasks">
+          <End Role="Tasks" Type="TimeTrackerModel.Store.Tasks" Multiplicity="1" />
+          <End Role="WorkCards" Type="TimeTrackerModel.Store.WorkCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="WorkCards">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCards_Users">
+          <End Role="Users" Type="TimeTrackerModel.Store.Users" Multiplicity="1" />
+          <End Role="WorkCards" Type="TimeTrackerModel.Store.WorkCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WorkCards">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TimeTrackerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TimeTrackerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnet_Membership" EntityType="TimeTrackerModel.aspnet_Membership" />
+          <EntitySet Name="aspnet_Profile" EntityType="TimeTrackerModel.aspnet_Profile" />
+          <EntitySet Name="aspnet_Users" EntityType="TimeTrackerModel.aspnet_Users" />
+          <EntitySet Name="Tasks" EntityType="TimeTrackerModel.Tasks" />
+          <EntitySet Name="Users" EntityType="TimeTrackerModel.Users" />
+          <EntitySet Name="UsersTasks" EntityType="TimeTrackerModel.UsersTasks" />
+          <EntitySet Name="WorkCards" EntityType="TimeTrackerModel.WorkCards" />
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="TimeTrackerModel.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__38996AB5" Association="TimeTrackerModel.FK__aspnet_Pr__UserI__38996AB5">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Profile_Users" Association="TimeTrackerModel.FK_aspnet_Profile_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersTasks_Tasks" Association="TimeTrackerModel.FK_UsersTasks_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="UsersTasks" EntitySet="UsersTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCards_Tasks" Association="TimeTrackerModel.FK_WorkCards_Tasks">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="WorkCards" EntitySet="WorkCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersTasks_Users" Association="TimeTrackerModel.FK_UsersTasks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersTasks" EntitySet="UsersTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCards_Users" Association="TimeTrackerModel.FK_WorkCards_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WorkCards" EntitySet="WorkCards" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="MobilePIN" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TimeTrackerModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="PropertyNames" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PropertyValuesString" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PropertyValuesBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="TimeTrackerModel.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Users" Relationship="TimeTrackerModel.FK_aspnet_Profile_Users" FromRole="aspnet_Profile" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="TimeTrackerModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Profile" Relationship="TimeTrackerModel.FK__aspnet_Pr__UserI__38996AB5" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Guid" Nullable="false" />
+          <Property Name="TaskName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="StartTime" Type="DateTime" />
+          <Property Name="EndTime" Type="DateTime" />
+          <Property Name="Estimation" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UsersTasks" Relationship="TimeTrackerModel.FK_UsersTasks_Tasks" FromRole="Tasks" ToRole="UsersTasks" />
+          <NavigationProperty Name="WorkCards" Relationship="TimeTrackerModel.FK_WorkCards_Tasks" FromRole="Tasks" ToRole="WorkCards" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Profile" Relationship="TimeTrackerModel.FK_aspnet_Profile_Users" FromRole="Users" ToRole="aspnet_Profile" />
+          <NavigationProperty Name="UsersTasks" Relationship="TimeTrackerModel.FK_UsersTasks_Users" FromRole="Users" ToRole="UsersTasks" />
+          <NavigationProperty Name="WorkCards" Relationship="TimeTrackerModel.FK_WorkCards_Users" FromRole="Users" ToRole="WorkCards" />
+        </EntityType>
+        <EntityType Name="UsersTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TaskId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="TimeTrackerModel.FK_UsersTasks_Tasks" FromRole="UsersTasks" ToRole="Tasks" />
+          <NavigationProperty Name="Users" Relationship="TimeTrackerModel.FK_UsersTasks_Users" FromRole="UsersTasks" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="WorkCards">
+          <Key>
+            <PropertyRef Name="CardId" />
+          </Key>
+          <Property Name="CardId" Type="Guid" Nullable="false" />
+          <Property Name="TaskId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="LogComment" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Tasks" Relationship="TimeTrackerModel.FK_WorkCards_Tasks" FromRole="WorkCards" ToRole="Tasks" />
+          <NavigationProperty Name="Users" Relationship="TimeTrackerModel.FK_WorkCards_Users" FromRole="WorkCards" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Role="aspnet_Users" Type="TimeTrackerModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="TimeTrackerModel.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pr__UserI__38996AB5">
+          <End Role="aspnet_Users" Type="TimeTrackerModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="TimeTrackerModel.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Profile_Users">
+          <End Role="Users" Type="TimeTrackerModel.Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="TimeTrackerModel.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersTasks_Tasks">
+          <End Role="Tasks" Type="TimeTrackerModel.Tasks" Multiplicity="1" />
+          <End Role="UsersTasks" Type="TimeTrackerModel.UsersTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="UsersTasks">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCards_Tasks">
+          <End Role="Tasks" Type="TimeTrackerModel.Tasks" Multiplicity="1" />
+          <End Role="WorkCards" Type="TimeTrackerModel.WorkCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="WorkCards">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersTasks_Users">
+          <End Role="Users" Type="TimeTrackerModel.Users" Multiplicity="1" />
+          <End Role="UsersTasks" Type="TimeTrackerModel.UsersTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersTasks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCards_Users">
+          <End Role="Users" Type="TimeTrackerModel.Users" Multiplicity="1" />
+          <End Role="WorkCards" Type="TimeTrackerModel.WorkCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WorkCards">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TimeTrackerModelStoreContainer" CdmEntityContainer="TimeTrackerEntities">
+          <EntitySetMapping Name="aspnet_Membership"><EntityTypeMapping TypeName="TimeTrackerModel.aspnet_Membership"><MappingFragment StoreEntitySet="aspnet_Membership">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+            <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+            <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+            <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+            <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+            <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+            <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+            <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+            <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+            <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+            <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+            <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+            <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+            <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Profile"><EntityTypeMapping TypeName="TimeTrackerModel.aspnet_Profile"><MappingFragment StoreEntitySet="aspnet_Profile">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+            <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+            <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+            <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users"><EntityTypeMapping TypeName="TimeTrackerModel.aspnet_Users"><MappingFragment StoreEntitySet="aspnet_Users">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+            <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+            <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+            <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tasks"><EntityTypeMapping TypeName="TimeTrackerModel.Tasks"><MappingFragment StoreEntitySet="Tasks">
+            <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+            <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+            <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+            <ScalarProperty Name="Estimation" ColumnName="Estimation" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="TimeTrackerModel.Users"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Position" ColumnName="Position" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UsersTasks"><EntityTypeMapping TypeName="TimeTrackerModel.UsersTasks"><MappingFragment StoreEntitySet="UsersTasks">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="WorkCards"><EntityTypeMapping TypeName="TimeTrackerModel.WorkCards"><MappingFragment StoreEntitySet="WorkCards">
+            <ScalarProperty Name="CardId" ColumnName="CardId" />
+            <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+            <ScalarProperty Name="Duration" ColumnName="Duration" />
+            <ScalarProperty Name="LogComment" ColumnName="LogComment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TimeTrackerModel">
+        <EntityTypeShape EntityType="TimeTrackerModel.aspnet_Membership" Width="1.5" PointX="3" PointY="8.625" Height="5.2494108072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.aspnet_Profile" Width="1.5" PointX="3" PointY="5" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.aspnet_Users" Width="1.5" PointX="0.75" PointY="8.875" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Tasks" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.Users" Width="1.5" PointX="0.75" PointY="4.875" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.UsersTasks" Width="1.5" PointX="3" PointY="2.25" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeTrackerModel.WorkCards" Width="1.5" PointX="6" PointY="5" Height="2.5571907552083317" IsExpanded="true" />
+        <AssociationConnector Association="TimeTrackerModel.FK__aspnet_Me__UserI__22AA2996" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.24974609375" />
+          <ConnectorPoint PointX="3" PointY="10.24974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK__aspnet_Pr__UserI__38996AB5" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.8761528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="8.5011528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="6.1824446614583328" />
+          <ConnectorPoint PointX="3" PointY="6.1824446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK_aspnet_Profile_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.5287223307291669" />
+          <ConnectorPoint PointX="3" PointY="5.5287223307291669" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK_UsersTasks_Tasks" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.9708968098958328" />
+          <ConnectorPoint PointX="3" PointY="2.9708968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK_WorkCards_Tasks" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.46875" />
+          <ConnectorPoint PointX="6.75" PointY="1.46875" />
+          <ConnectorPoint PointX="6.75" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK_UsersTasks_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.875" />
+          <ConnectorPoint PointX="2.625" PointY="4.5" />
+          <ConnectorPoint PointX="2.625" PointY="4.6052864583333335" />
+          <ConnectorPoint PointX="3" PointY="4.2302864583333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="TimeTrackerModel.FK_WorkCards_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.4922900390624987" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="7.4922900390624978" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="7.4922900390624987" />
+          <ConnectorPoint PointX="6" PointY="7.4922900390624987" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

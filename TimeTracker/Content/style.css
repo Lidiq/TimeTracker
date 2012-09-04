@@ -1,0 +1,299 @@
+/*styling body, header and footer, common for all pages*/
+body
+{
+	background:#505050 url(images/stripes2.png);
+}
+
+.content
+{
+	margin: 0 auto;
+	width:960px;
+	background-color:#FFF;
+	border-radius: 5px;
+	box-shadow:0 0 15px black;
+}
+
+#main {
+	margin: 20px;
+	float:left;
+}
+
+header {
+	background:url(images/header.png) repeat-x;
+	height:110px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.logo
+{
+	background: url(images/logo.png) no-repeat center;
+	cursor: pointer;
+	display: block;
+	width:320px;
+	height:90px;
+	float:left;
+	margin-top:10px;
+}
+
+.loginForm
+{
+	background:url(images/login.png) no-repeat center;
+	float: right;
+	width: 245px;
+	height: 95px;
+	margin-right: 20px;
+}
+
+.username
+{
+	margin-top: 5px;
+	margin-left:5px;
+	color: silver;
+	font-style: italic;
+}
+
+.password {
+	margin-top: 6px;
+	margin-left: 63px;
+	color: silver;
+	font-style: italic;
+}
+
+.loginForm  a {
+	color: #3f81c3;
+}
+
+.log_links {
+	color: #3f81c3;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.menu {
+	background: url(images/menu2.png) repeat-x;
+	height: 50px;
+	width:100%;
+	padding: 0;
+	margin: 0;
+}
+
+.menu li {
+    display: inline;
+    list-style: none;
+}
+
+.menu a {
+	
+	display:block;
+	padding: 5px 43px;
+	color:#fff;
+	text-transform: uppercase;
+	float: left;
+	text-decoration: none;
+	text-align: center;
+}
+.menu a:hover{
+	background: url(images/thead_hover.png) repeat-x;
+}
+
+.menu a.selected{
+	background: url(images/thead_hover.png) repeat-x;
+}
+
+.menu span
+{
+	color: #26615e;
+	text-transform: lowercase;
+}
+
+footer {
+	background: url(images/footer2.png) repeat-x;
+	height:90px;
+	width:100%;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/*end common*/
+
+.sidebar
+{
+	float:left;
+}
+
+.sidebar div
+{	
+	background: url(images/sidebar.png) repeat-x;
+	border: 1px solid #e1e5e9;
+	width:220px;
+	text-indent: 30px;
+	height:30px;
+	padding-top: 8px;
+	cursor: pointer;
+}
+
+#singleEmployee,#singleT
+{	
+	display: none;
+}
+
+.resTable
+{
+	float:left;
+}
+.single, .all
+{
+	margin-left:30px;
+	width:668px;
+}
+.clear
+{
+	clear: both;
+	float: none;
+}
+
+table.single, table.all
+{
+	border-collapse:collapse;
+	border: 1px solid #8a8a8a
+}
+table.single
+{
+	margin-top:20px;
+}
+table.single td, table.all td
+{
+	padding: 0 5px;
+}
+#allEmployee td{padding:5px;}
+
+table.single thead, table.all thead
+{
+	background:url(images/thead2.png) repeat-x;
+	cursor: pointer;
+}
+
+.options
+{
+	margin-left:30px;
+	width: 400px;
+	height: 30px;
+}
+
+.pagination
+{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.pagination a
+{
+	margin-left: 5px;
+	margin-right: 5px;
+	text-decoration: none;
+}
+
+
+/*styling work card for each user(employee)*/
+.workCard
+{
+	width:650px;
+	margin: 0 auto;
+}
+.workCard label
+{
+	color: #3F81C3;
+	cursor: pointer;
+	float:left;
+	width:200px;
+	clear:right;
+	margin-top: 5px;
+}
+ .workCard input[type=text]
+ {
+	width:400px;
+	float:right;
+	height: 30px;
+	margin-bottom:10px;
+ }
+ 
+ .workCard textarea
+ {
+	float:right;
+ }
+ 
+ .workCard select
+ {
+	width:400px;
+	float:right;
+	height: 30px;
+	margin-bottom:10px;
+ }
+ .workCard input[type=submit]
+ {
+	width:150px;
+	margin: 20px 255px;
+ }
+ 
+ .explanation
+ {
+	color:#c8152a;
+	text-align: center;
+	width: 900px;
+	margin-bottom:30px;
+	font-style:italic;
+ }
+/*end of styling work card*/
+
+.info
+{
+	background: url(images/home_bg.png) repeat-x;;
+	border-radius: 5px;
+	width: 500px;
+	padding:10px 30px;;
+	border: 3px solid #e5e9ed;
+	color:#444549;
+	margin: 0 auto;
+	text-align:justify;
+}
+
+.info h2
+{
+	color:#367aba;
+	text-transform: uppercase;
+	text-align:center;
+}
+
+.home
+{
+	float:none;
+}
+
+.welcome {
+	text-align:center;
+	margin-top: 10px;
+}
+
+.login label, .register label {
+    color: #3F81C3;
+    cursor: pointer;
+    float: left;
+    width: 150px;
+    clear: right;
+    margin-top: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 300px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+fieldset {
+	padding: 20px;
+	width: 580px;
+}
+
+
+
+ 

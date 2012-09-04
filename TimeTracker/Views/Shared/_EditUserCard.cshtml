@@ -1,0 +1,37 @@
+﻿@using TimeTracker.Models;
+@model List<CardViewModel>
+
+
+<div class="editEmployee">
+@if (ViewBag.Card == null)
+{
+    using (Html.BeginForm("EditCard", "Admin", FormMethod.Post))
+    {
+        <label for="card">Choose Work Card</label>
+        <select id="card" name="cardId">
+        @foreach (var card in Model)
+        {
+            <option value="@card.CardId">@card.start</option>
+        }
+        </select>
+        <input type="submit" name="delete" value="Delete Card" />
+        <input type="submit" name="edit" value="Edit Card" />
+    }
+
+}
+else
+{
+    using (Html.BeginForm("EditCard", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" name="cardId" value="@ViewBag.Card.CardId" />
+	    <label for="start">StartTime</label>
+        <input type="text" id="start" name="start" value="@ViewBag.Card.StartTime"/>
+	    <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" value="@ViewBag.Card.Duration"/>
+	    <label for="comment">Short comment</label>
+	    <textarea id="comment" rows="10" cols="47" name="comment">@ViewBag.Card.LogComment</textarea>
+	    <br/>
+	    <input type="submit" name="save" value="Save changes" />
+    }
+}
+</div>

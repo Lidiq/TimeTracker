@@ -1,0 +1,41 @@
+form {
+	width: 668px;
+	margin-left:30px;
+}
+.addTask, .addEmployee, .editTask, .editEmployee, .editCard
+{
+	float:left;
+}
+.editEmployee,.deleteEmployee
+{
+	/*display:none*/
+}
+
+label
+{
+	color: #3F81C3;
+	cursor: pointer;
+	float: left;
+	width: 180px;
+	clear: right;
+	margin-top: 5px;
+}
+
+input[type="text"],input[type="password"]
+{
+	width: 400px;
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+textarea
+{
+	margin-bottom: 10px;
+	
+}
+select
+ {
+	width:400px;
+	height: 30px;
+	margin-bottom:10px;
+ }

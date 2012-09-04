@@ -1,0 +1,17 @@
+﻿@using TimeTracker.Models;
+@model List<UserViewModel>
+
+
+<div class="editEmployee">
+ <form action="/Admin/Card/Edit" method="post">
+        <label for="task">Choose Employee</label>
+        <select id="task" name="username" onchange="form.submit()">
+            <option>Choose employee</option>
+        @foreach (var user in Model)
+        {
+            <option value="@user.username">@user.FirstName @user.LastName (@user.username)</option>
+        }
+        </select>
+    </form>
+
+</div>

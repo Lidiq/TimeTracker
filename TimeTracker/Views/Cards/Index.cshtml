@@ -1,0 +1,40 @@
+﻿@using TimeTracker.Models;
+
+@model List<TaskViewModel>
+
+@{
+    ViewBag.Title = "WorkCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cards</h2>
+
+<div class="explanation">
+You are currently logged as @User.Identity.Name 
+Here you have to fill in a form for the task you have worked on and done it.
+Once you submit the form, you CANNOT edit it, so please, be sure for tha data you add.
+</div>
+
+@ViewBag.Success
+
+<div class="workCard">
+@using (Html.BeginForm("CreateCard", "Cards", FormMethod.Post))
+{
+	<label for="task">Choose your task</label>
+	<select id="task" name="task" class="optTasks">
+		<option>Choose a task</option>
+		@foreach (var task in Model)
+        {
+            <option value="@task.TaskId">@task.TaskName</option>
+        }
+	</select>
+	<label for="start">StartTime</label>
+    <input type="text" id="start" name="start" />
+	<label for="duration">Duration</label>
+    <input type="text" id="duration" name="duration"/>
+	<label for="comment">Short comment</label>
+	<textarea id="comment" rows="10" cols="47" name="comment"></textarea>
+	<div class="clear"></div>
+	<input type="submit" name="save" value="Save card"/>
+}
+</div>

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker", "TimeTracker\TimeTracker.csproj", "{59D88B96-73AC-485F-AE8C-67D21A4D981D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Tests", "TimeTracker.Tests\TimeTracker.Tests.csproj", "{80EA8BD3-468D-4113-8E20-7FFEB7F18DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.DAL", "TimeTracker.DAL\TimeTracker.DAL.csproj", "{FE06A63C-C01C-4431-9583-B38E80D3FE83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D88B96-73AC-485F-AE8C-67D21A4D981D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D88B96-73AC-485F-AE8C-67D21A4D981D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D88B96-73AC-485F-AE8C-67D21A4D981D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D88B96-73AC-485F-AE8C-67D21A4D981D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80EA8BD3-468D-4113-8E20-7FFEB7F18DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80EA8BD3-468D-4113-8E20-7FFEB7F18DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80EA8BD3-468D-4113-8E20-7FFEB7F18DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80EA8BD3-468D-4113-8E20-7FFEB7F18DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE06A63C-C01C-4431-9583-B38E80D3FE83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE06A63C-C01C-4431-9583-B38E80D3FE83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE06A63C-C01C-4431-9583-B38E80D3FE83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE06A63C-C01C-4431-9583-B38E80D3FE83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

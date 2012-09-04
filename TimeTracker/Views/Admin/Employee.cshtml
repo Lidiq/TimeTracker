@@ -1,0 +1,22 @@
+﻿@using TimeTracker.Models;
+
+           
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Register new users, edit existing ones or delete any</h2>
+<div class="sidebar">
+	<a href="/Admin/Employee/Register"><div id="createUser">Create an employee<span>&raquo;</span></div></a>
+    <a href="/Admin/Employee/Edit"><div id="editUser">Edit an employee<span>&raquo;</span></div></a>
+</div>
+
+@if (ViewBag.Operation == "Edit")
+{
+    @Html.Partial("_EditEmployee")
+}
+@if (ViewBag.Operation == "Register")
+{
+    @Html.Partial("_AddEmployee")
+}

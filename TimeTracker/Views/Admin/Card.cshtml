@@ -1,0 +1,22 @@
+﻿@using TimeTracker.Models;
+           
+@{
+    ViewBag.Title = "Card";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Register new users, edit existing ones or delete any</h2>
+<div class="sidebar">
+    <div id="editUser">Edit a work card<span>&raquo;</span></div>
+</div>
+
+
+
+@if (ViewBag.Operation != "Edit")
+{
+    @Html.Partial("_EditCard")
+}
+else
+{
+    @Html.Partial("_EditUserCard")
+}

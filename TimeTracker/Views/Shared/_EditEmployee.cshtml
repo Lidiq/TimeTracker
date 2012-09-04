@@ -1,0 +1,43 @@
+﻿@using TimeTracker.Models;
+
+@model List<UserViewModel>
+
+<div class="editEmployee">
+@if (ViewBag.User == null)
+{
+    using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+    {
+        <label for="user">Choose User</label>
+        <select id="user" name="user">
+        @foreach (var user in Model)
+        {
+            <option value="@user.username">@user.username (@user.FirstName @user.LastName)</option>
+        }
+        </select>
+        <br />
+        <input type="submit" name="delete" value="Delete User" />
+        <input type="submit" name="edit" value="Edit User" />
+    }
+}
+else
+{
+    using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" name="username" value="@ViewBag.User.Username" />
+        <label for="newpassword">New Password</label>
+	    <input type="password" id="password" name="password" value="@ViewBag.Membership.Password" />
+	    <label for="newconfpass">Confirm New password</label>
+	    <input type="password" id="newconfpass" value="@ViewBag.Membership.Password"/>
+	    <label for="firstname">First Name</label>
+	    <input type="text" id="firstname" name="firstname" value="@ViewBag.User.FirstName" />
+	    <label for="lastname">Last name</label>
+	    <input type="text" id="lastname" name="lastname" value="@ViewBag.User.LastName" />
+	    <label for="newposition">Position</label>
+	    <input type="text" id="newposition" value="@ViewBag.User.Position" />
+	    <label for="email">Email</label>
+	    <input type="text" name="email" id="email" value="@ViewBag.Membership.Email" />
+	    <br/>
+	    <input type="submit" name="save" value="Save changes" />
+    }
+}
+</div>

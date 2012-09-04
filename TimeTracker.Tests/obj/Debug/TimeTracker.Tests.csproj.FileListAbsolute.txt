@@ -1,0 +1,10 @@
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.Tests.dll.config
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.Tests.dll
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.Tests.pdb
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.dll
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.DAL.dll
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.pdb
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\bin\Debug\TimeTracker.DAL.pdb
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\obj\Debug\TimeTracker.Tests.dll
+D:\TimeTracker\TimeTracker\TimeTracker.Tests\obj\Debug\TimeTracker.Tests.pdb
