@@ -22,13 +22,17 @@ namespace TimeTracker.Controllers
 
             List<Tasks> tasks = TasksDAL.GetTasks();
             List<TaskViewModel> tasksViewModel = new List<TaskViewModel>();
+            List<int> numberOfWorkers = new List<int>();
 
             foreach (var task in tasks)
             {
                 tasksViewModel.Add(
                     new TaskViewModel(task)
                 );
+                numberOfWorkers.Add(TasksDAL.GetNumberOfUsersPerTask(task.TaskId));
             }
+
+            ViewBag.NumberOfWorkers = numberOfWorkers;
             return View(tasksViewModel);
         }
 

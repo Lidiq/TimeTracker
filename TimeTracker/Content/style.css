@@ -245,29 +245,6 @@ table.single thead, table.all thead
  }
 /*end of styling work card*/
 
-.info
-{
-	background: url(images/home_bg.png) repeat-x;;
-	border-radius: 5px;
-	width: 500px;
-	padding:10px 30px;;
-	border: 3px solid #e5e9ed;
-	color:#444549;
-	margin: 0 auto;
-	text-align:justify;
-}
-
-.info h2
-{
-	color:#367aba;
-	text-transform: uppercase;
-	text-align:center;
-}
-
-.home
-{
-	float:none;
-}
 
 .welcome {
 	text-align:center;
@@ -294,6 +271,26 @@ fieldset {
 	width: 580px;
 }
 
+.info
+{
+	background: url(images/home_bg.png) repeat-x;
+	border-radius: 5px;
+	width: 500px;
+	padding:10px 30px;;
+	border: 3px solid #e5e9ed;
+	color:#444549;
+	margin: 0 auto;
+	text-align:justify;
+}
 
+h2
+{
+	color:#367aba;
+	margin-top:0;
+}
 
- 
+.sidebar a
+{
+	text-decoration: none;
+	color: #333;
+}

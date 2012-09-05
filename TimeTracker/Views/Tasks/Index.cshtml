@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Tasks";
 }
-
+<h2>Tasks</h2>
 @if (ViewBag.ShowTask == true)
 {
     <script>$(document).ready(function () { $('#singleTask').click(); })</script>
@@ -28,25 +28,28 @@
 						<th>End</th>
 						<th>Count</th>
 						<th>Estimation</th>
-						<th>Logged</th>
+						
 						<th>Status</th>
 					</tr>
 				</thead>
-				<tbody>
-
-                @foreach (TaskViewModel task in Model)
+				<tbody> 
+                @{
+                    int pos= 0;
+                foreach (TaskViewModel task in Model)
                 {
                     <tr>
                         <td>@task.TaskName</td>
                         <td>@task.Description</td>
                         <td>@task.start.Date.ToShortDateString()</td>
                         <td>@task.end.Date.ToShortDateString()</td>
-                        <td>0</td>
+                        <td>@((ViewBag.NumberOfWorkers as ICollection<int>).ElementAt(pos))</td>
                         <td>@task.Estimation</td>
-                        <td></td>
+                        
                         <td>@task.Status</td>
-                    </tr>; 
+                    </tr>;
+                         pos++;
                 }	
+                }
 				</tbody>
 			</table>
 	

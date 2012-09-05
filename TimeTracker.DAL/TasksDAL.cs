@@ -100,5 +100,12 @@ namespace TimeTracker.DAL
             List<Guid> taskIds = tasks.Select(el => el.TaskId).ToList();
             return entity.Tasks.Select(el => el).Where(id => taskIds.Contains(id.TaskId) && id.IsActive).ToList(); 
         }
+
+
+        public static int GetNumberOfUsersPerTask(Guid taskId)
+        {
+            TimeTrackerEntities entity = new TimeTrackerEntities();
+            return entity.UsersTasks.Count(el => el.TaskId == taskId);
+        }
     }
 }
